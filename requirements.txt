@@ -1,0 +1,8 @@
+#pip freeze > requirements.txt
+
+requests==2.31.0
+beautifulsoup4==4.12.2
+langdetect==1.0.9
+streamlit==1.44.1
+pandas==2.0.2
+serpapi==0.1.5
