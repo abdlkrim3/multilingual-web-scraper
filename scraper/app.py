@@ -76,6 +76,9 @@ def run_app():
 
     logger.initialize()
 
+    if submitted or Refresh:
+        logger.clear()
+
     if submitted:
         if not serpapi_key.strip() and not custom_site_url.strip():
             st.session_state.log_content.append("🚫 Please provide a SerpAPI key or a custom site URL")
@@ -84,7 +87,7 @@ def run_app():
 
         with st.spinner("Scraping in progress..."):
             # Reset all state
-            scraper_state.__init__()  # This clears all sets and counters
+            scraper_state.__init__()  
             start_time = time.time()
             before_scraping = set(os.listdir("scraped_texts")) if os.path.exists("scraped_texts") else set()
 
@@ -110,7 +113,7 @@ def run_app():
                     #st.warning(f"❌ Failed to crawl the site: {e}")
                     logger.log(f"Failed to crawl the site: {e}", "error")
             else:
-                urls = search_google_serpapi(topic, serpapi_key, num_results=num_results, lang_code=selected_lang_code)
+                urls = search_google_serpapi(topic, serpapi_key, num_results=num_results, lang_code=selected_lang_code, skip_youtube=skip_youtube)
                 if not urls:
                         logger.log("No search results found", "warning")
                         return
@@ -150,7 +153,7 @@ def run_app():
         after_scraping = set(os.listdir("scraped_texts")) if os.path.exists("scraped_texts") else set()
         new_files = [f for f in after_scraping - before_scraping if f.endswith(".txt")]
         #st.info(f"🗂 {language_option} pages saved: {scraper_state.lang_pages_saved}")
-        logger.log(f"🗂 {language_option} pages saved: {new_files}", "info")
+        logger.log(f"🗂 {language_option} pages saved: {len(new_files)}", "info")
         #st.info(f"🧾 Metadata saved to: {csv_file}")
         logger.log(f"🧾 Metadata saved to: {csv_file}", "info")
         #st.info(f"⏱ Time taken: {elapsed_time}")
@@ -163,19 +166,15 @@ def run_app():
         try:
             df = pd.read_csv(csv_file)
             total_in_csv = len(df)
-            arabic_in_csv = len(df[df['Topic'].str.contains('|'.join(topic_keywords), case=False, na=False)])
         except Exception as e:
             logger.log(f"Could not read CSV: {e}", "warning")
             total_in_csv = 0
-            arabic_in_csv = 0
         
-        after_scraping = set(os.listdir("scraped_texts")) if os.path.exists("scraped_texts") else set()
-        new_files = len([f for f in after_scraping - before_scraping if f.endswith(".txt")])
-        
+    
         logger.log("🛑 Scraping stopped by user")
-        logger.log(f"📊 Total pages scraped: {total_in_csv}", "info")
-        logger.log(f"🗂 {language_option} pages saved: {new_files if new_files > 0 else arabic_in_csv}", "info")
-        logger.log(f"⏱ Time taken: {elapsed_time}", "info")
+        logger.log(f"📊 Total pages scraped: {scraper_state.total_scraped_pages}", "info")
+        #logger.log(f"🗂 {language_option} pages saved: {total_in_csv if total_in_csv > 0 else 0}", "info")
+        #logger.log(f"⏱ Time taken: {elapsed_time}", "info")
 
     if Refresh:
         try:

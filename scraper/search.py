@@ -4,7 +4,7 @@ import streamlit as st
 from logger import logger
 
 
-def search_google_serpapi(topic, api_key, num_results=5, lang_code='ar'):
+def search_google_serpapi(topic, api_key, num_results=5, lang_code='ar', skip_youtube=True):
     query = topic
     params = {
         "q": query,
@@ -29,9 +29,8 @@ def search_google_serpapi(topic, api_key, num_results=5, lang_code='ar'):
             
             # Skip conditions
             if (
-                "youtube.com" in url or 
-                "youtu.be" in url or
-                url.endswith(('.pdf', '.jpg', '.png', '.docx'))
+                skip_youtube and ("youtube.com" in url or "youtu.be" in url) or
+                url.endswith(('.pdf', '.jpg', '.png', '.docx'))  # Exclude file types but allow PDFs
             ):
                 continue
                 
@@ -42,7 +41,7 @@ def search_google_serpapi(topic, api_key, num_results=5, lang_code='ar'):
         
         if len(final_results) < num_results:
             #st.warning(f"⚠️ Only found {len(final_results)} suitable results (skipped YouTube/PDFs)")
-            logger.log(f"Only found {len(final_results)} suitable results (skipped YouTube/PDFs)", "warning")
+            logger.log(f"Only found {len(final_results)} suitable results (skipped YouTube)", "warning")
 
         
         return final_results
